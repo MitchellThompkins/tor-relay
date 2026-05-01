@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:3.23
 
 # Install Tor
 RUN apk add --no-cache tor curl && \
