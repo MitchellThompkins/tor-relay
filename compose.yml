@@ -6,6 +6,9 @@ services:
     ports:
       - 9001:9001
       - 9030:9030
+      # - 9035:9035
+    # environment:
+    #   - ENABLE_METRICS=1
     volumes:
       - ./data:/var/lib/tor
     restart: always

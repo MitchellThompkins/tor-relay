@@ -11,7 +11,7 @@ COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 # Expose relay ports
-EXPOSE 9001 9030
+EXPOSE 9001 9030 9035
 
 # Volume for relay identity/state
 VOLUME ["/var/lib/tor"]

@@ -11,6 +11,9 @@ TORRC_FILE=/etc/tor/torrc
 : "${ACCOUNTING_START:=month 1 00:00}"
 : "${NICKNAME:=MyDockerRelay}"
 : "${CONTACT_INFO:=myemail@example.com}"
+: "${ENABLE_METRICS:=0}"
+: "${METRICS_PORT:=9035}"
+: "${METRICS_PORT_POLICY:=accept 0.0.0.0/0}"
 
 # start fresh torrc
 echo "ExitRelay 0" > "$TORRC_FILE"
@@ -29,6 +32,11 @@ echo "AccountingMax $ACCOUNTING_MAX" >> "$TORRC_FILE"
 echo "AccountingStart $ACCOUNTING_START" >> "$TORRC_FILE"
 echo "Nickname $NICKNAME" >> "$TORRC_FILE"
 echo "ContactInfo $CONTACT_INFO" >> "$TORRC_FILE"
+
+if [ "$ENABLE_METRICS" = "1" ]; then
+    echo "MetricsPort 0.0.0.0:$METRICS_PORT" >> "$TORRC_FILE"
+    echo "MetricsPortPolicy $METRICS_PORT_POLICY" >> "$TORRC_FILE"
+fi
 
 PUBLIC_IP=$(curl -s https://api.ipify.org)
 echo "Address $PUBLIC_IP" >> "$TORRC_FILE"
