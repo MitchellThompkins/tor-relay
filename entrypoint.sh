@@ -27,6 +27,7 @@ else
     echo "ORPort $OR_PORT" >> "$TORRC_FILE"
     echo "DirPort $DIR_PORT" >> "$TORRC_FILE"
 fi
+echo "RelayBandwidthRate $RELAY_BANDWIDTH_RATE" >> "$TORRC_FILE"
 echo "RelayBandwidthBurst $RELAY_BANDWIDTH_BURST" >> "$TORRC_FILE"
 echo "AccountingMax $ACCOUNTING_MAX" >> "$TORRC_FILE"
 echo "AccountingStart $ACCOUNTING_START" >> "$TORRC_FILE"
